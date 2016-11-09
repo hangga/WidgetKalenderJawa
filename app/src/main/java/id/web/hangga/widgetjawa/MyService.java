@@ -1,6 +1,8 @@
 package id.web.hangga.widgetjawa;
 
 import android.app.Service;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.IBinder;
 import android.widget.RemoteViews;
@@ -15,12 +17,9 @@ public class MyService extends Service {
 
     Calendar calendar = Calendar.getInstance();
 
-    public MyService() {
-    }
-
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        update();
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -38,5 +37,9 @@ public class MyService extends Service {
         views.setTextViewText(R.id.txt_date_hijri, HijriCalendar.getSimpleDate(calendar));
         views.setTextViewText(R.id.txt_date_georgian, new SimpleDateFormat("dd-MMMM-yyyy HH:mm:ss").format(calendar.getTime()));
 
+        // Push update for this widget to the home screen
+        ComponentName thisWidget = new ComponentName(this, JavaWidget.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(this);
+        manager.updateAppWidget(thisWidget, views);
     }
 }

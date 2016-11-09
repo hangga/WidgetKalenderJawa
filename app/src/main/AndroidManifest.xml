@@ -11,6 +11,7 @@
         <receiver android:name=".JavaWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="id.web.hangga.widgetjawa.JavaWidget.ACTION_WIDGET_RECEIVER"/>
             </intent-filter>
 
             <meta-data
@@ -18,10 +19,8 @@
                 android:resource="@xml/java_widget_info" />
         </receiver>
 
-        <service
-            android:name=".MyService"
-            android:enabled="true"
-            android:exported="true"></service>
+        <service android:enabled="true" android:name=".MyService" />
+
     </application>
 
 </manifest>

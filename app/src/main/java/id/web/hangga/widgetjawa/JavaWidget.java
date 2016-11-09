@@ -1,22 +1,24 @@
 package id.web.hangga.widgetjawa;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.widget.RemoteViews;
+import android.content.Intent;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import id.web.hangga.widgetjawa.Utils.HijriCalendar;
-import id.web.hangga.widgetjawa.Utils.JavaneseCalenderUtils;
 
 /**
  * Implementation of App Widget functionality.
  */
 public class JavaWidget extends AppWidgetProvider {
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+    private PendingIntent service = null;
+    public static String ACTION_WIDGET_RECEIVER = "ActionReceiverWidget";
+
+    /*static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 
         Calendar calendar = Calendar.getInstance();
 
@@ -30,14 +32,23 @@ public class JavaWidget extends AppWidgetProvider {
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
-    }
+
+
+    }*/
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
-        for (int appWidgetId : appWidgetIds) {
+        /*for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
+        }*/
+        Calendar TIME = Calendar.getInstance();
+        AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent i = new Intent(context, MyService.class);
+        if (service == null){
+            service = PendingIntent.getService(context, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
         }
+        m.setRepeating(AlarmManager.RTC, TIME.getTime().getTime(), 1000 * 1/*lima detik*/, service);
     }
 
     @Override
