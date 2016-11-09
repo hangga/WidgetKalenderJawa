@@ -167,6 +167,6 @@ public final class HijriCalendar {
 
     public static String getSimpleDate(Calendar cal) {
         int[] dt = ummalQuraCalendar(cal);
-        return WEEKDAYS[dt[0]] + ", " + dt[1] + " " + MONTHS[dt[2]] + " " + dt[3] + "H";
+        return WEEKDAYS[dt[0]] + ", " + dt[1] + " " + MONTHS[dt[2]] + " " + dt[3] + " H";
     }
 }
