@@ -52,8 +52,8 @@ public class MyService extends Service {
         views.setTextViewText(R.id.txt_hari, JavaneseCalenderUtils.getDina(calendar));
         views.setTextViewText(R.id.txt_pasaran, JavaneseCalenderUtils.getPasaran(calendar));
         views.setTextViewText(R.id.txt_date_hijri, HijriCalendar.getSimpleDate(calendar));
-        views.setTextViewText(R.id.txt_date_georgian, new SimpleDateFormat("dd-MMMM-yyyy HH:mm:ss").format(calendar.getTime()));
-
+        views.setTextViewText(R.id.txt_date_georgian, new SimpleDateFormat("dd-MMMM-yyyy").format(calendar.getTime())+" M");
+        views.setTextViewText(R.id.txt_jam, new SimpleDateFormat("HH:mm:ss").format(calendar.getTime()));
         // Push update for this widget to the home screen
         AppWidgetManager manager = AppWidgetManager.getInstance(this);
         manager.updateAppWidget(widgetId, views);

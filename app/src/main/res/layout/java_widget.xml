@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="200dp"
     android:background="@android:drawable/dialog_holo_dark_frame"
     android:padding="@dimen/widget_margin">
 
@@ -8,8 +8,8 @@
         android:id="@+id/txt_hari"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/double_padding"
         android:layout_marginLeft="@dimen/default_padding"
         android:contentDescription="@string/appwidget_text"
         android:text="@string/appwidget_text"
@@ -35,8 +35,8 @@
         android:id="@+id/txt_date_georgian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/double_padding"
         android:layout_marginRight="@dimen/default_padding"
         android:contentDescription="@string/appwidget_text"
         android:text="@string/appwidget_text"
@@ -47,6 +47,20 @@
     <TextView
         android:id="@+id/txt_date_hijri"
         android:layout_below="@+id/txt_date_georgian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/default_padding"
+        android:contentDescription="@string/appwidget_text"
+        android:text="@string/appwidget_text"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/txt_jam"
+        android:layout_below="@+id/txt_date_hijri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
